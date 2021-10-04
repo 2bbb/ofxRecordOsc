@@ -5,7 +5,7 @@ recording OSC with ofxPubSubOsc.
 ## Dependencies
 
 * ofxOsc
-* ofxPubSubOsc 0.3.2-
+* [ofxPubSubOsc](https://github.com/2bbb/ofxPubSubOsc) 0.3.3-
 
 ## Notice
 
