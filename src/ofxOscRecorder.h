@@ -246,7 +246,8 @@ namespace ofx {
                                 } else {
                                     json.push_back(offset_ms);
                                 }
-                                ofJson mess_json = mess;
+                                ofJson mess_json;
+                                to_json(mess_json, mess);
                                 json.push_back(mess_json);
                                 auto &&_ = std::lock_guard<decltype(osc_sequence_mutex)>(osc_sequence_mutex);
                                 if(!isRecordingNow()) continue;
