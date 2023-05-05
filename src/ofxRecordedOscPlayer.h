@@ -54,11 +54,24 @@ namespace ofx {
                                            messages.end(),
                                            to_ms);
                 for(auto it = from; it != to; ++it) {
-                    auto &mess = it->mess;
+                    const auto &mess = it->mess;
                     ofxNotifyToSubscribedOsc(mess.getWaitingPort(), mess);
                 }
             }
             
+            void play(std::string target_host, double from_ms, double to_ms) const {
+                auto from = std::lower_bound(messages.begin(),
+                                             messages.end(),
+                                             from_ms);
+                auto to = std::upper_bound(messages.begin(),
+                                           messages.end(),
+                                           to_ms);
+                for(auto it = from; it != to; ++it) {
+                    const auto &mess = it->mess;
+                    ofxSendOsc(target_host, mess.getWaitingPort(), mess);
+                }
+            }
+
             double duration() const
             { return messages.empty() ? 0.0 : messages.back().offset; };
             
